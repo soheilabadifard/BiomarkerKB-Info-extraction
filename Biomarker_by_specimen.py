@@ -35,7 +35,7 @@ def create_list_for_specimen(specimen_name: str) -> Optional[str]:
             print(f"  ✅ Successfully created list. List ID: {list_id}")
             return list_id
         else:
-            print(f"  ❌ Error: 'list_id' not found in the response.")
+            print("❌ Error: 'list_id' not found in the response.")
             return None
     except requests.exceptions.RequestException as e:
         print(f"  ❌ API request failed: {e}")
