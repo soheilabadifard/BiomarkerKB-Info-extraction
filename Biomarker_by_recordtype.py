@@ -1,8 +1,8 @@
-import requests
-import json
-import pandas as pd
 import io
 from typing import Optional
+
+import pandas as pd
+import requests
 
 # --- API Endpoints ---
 API_BASE = "https://api.biomarkerkb.org"
