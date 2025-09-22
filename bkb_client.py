@@ -166,7 +166,7 @@ def download_with_size_escalation(
             "🔬 Creating a search list for %s (size=%s)..." % (description, attempt_size or "auto")
         )
         request = ListRequest(payload=payload_factory(attempt_size), description=description)
-        try:python3 -m compileall Biomaerker_by_entity.py Biomarker_by_specimen.py Biomarker_by_recordtype.py bkb_client.py
+        try:
             list_id = create_list(request)
         except BiomarkerKBError as exc:
             logger(f"  ❌ API request failed for {description!r}: {exc}")
@@ -204,10 +204,11 @@ def download_with_size_escalation(
             return df
 
         previous_row_count = row_count
-        attempt_size *= 2 if attempt_size is not None else None
+        if attempt_size is not None:
+            attempt_size *= 2
         logger(
             "  ⚠️ Row count matches the requested page size. Retrying with a larger size (%s)."
-            % attempt_size
+            % (attempt_size or "auto")
         )
 
 
